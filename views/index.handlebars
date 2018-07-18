@@ -1,0 +1,34 @@
+<img src="/assets/burg.jpg">
+<h1 class="app-title text-center">Burger Burgler</h1>
+
+<div class="row d-flex justify-content-center">
+	<div class="burgers-avail">
+		<h2>Custom Burgers:</h2>
+		{{#each burgers}}
+			{{#notDevoured devoured}}
+			<div>
+				<span class="availBurger">{{id}}. {{burger_name}}</span>
+				<button class="eatBurger" data-burgerid="{{id}}">Eat It!</button>
+			</div>
+			{{/notDevoured}}
+		{{/each}}
+	</div>
+	<div class="burgers-devoured">
+		<h2>Eaten Burgers:</h2>
+		{{#each burgers}}
+			{{#isDevoured devoured}}
+			<div>
+				<button class="devouredBurger" disabled="disabled">{{id}}. {{burger_name}}</button>
+			</div>
+			{{/isDevoured}}
+		{{/each}}
+	</div>
+</div>
+
+<div align="center">
+	<form action="/api/new" method="POST" class="add-burger">
+	  <textarea id="burgerName" type="text" name="burger"></textarea><br/>
+	  <button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+	<p class="text-center">Name A Burger. Click the "Submit" button.</p>
+</div>
